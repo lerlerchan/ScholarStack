@@ -21,6 +21,7 @@
 | v1.6 | 2026-06-20 | Quality hardening (Light-skills analysis): CritiqueBot adversarial reviewer, Cross-Document Consistency Checker, Research Ethics Hard Stop, Verification Audit Log |
 | v1.6 addendum | 2026-07-15 | OpenDraft analysis: Citation Verification Gate, Expose Mode, TL;DR Tool, Revision Mode + versioning; 19-agent architecture rejected |
 | **v2.0** | **2026-07-19** | **Full consolidation of all above into one document; addendum features promoted to core; Hermes Agent front-door added as Under Evaluation (§13)** |
+| v2.0.1 | 2026-07-19 | Citation Verification Gate: DataCite added to resolver chain (empirical finding during Phase 2 implementation — arXiv DOIs missed by CrossRef+OpenAlex) |
 
 ---
 
@@ -104,7 +105,9 @@ Stage 1 — Literature Discovery
 
 Stage 1.25 — Citation Verification Gate                  [promoted from v1.6 addendum]
   CitationVerifier n8n node — pre-write, not post-hoc:
-    - DOI / OpenAlex ID resolves? (CrossRef + OpenAlex APIs, no LLM call)
+    - DOI resolves? (CrossRef → DataCite → OpenAlex chain, no LLM call)
+      [v2.0.1: DataCite added — arXiv DOIs (10.48550/*) are DataCite-registered
+       and resolve on neither CrossRef nor OpenAlex DOI lookup]
     - Title/author/year match claimed metadata?
     - Reject → excluded from citation pool, logged to Audit Log
       (reason: not_found / metadata_mismatch)
