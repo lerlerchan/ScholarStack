@@ -108,4 +108,12 @@ NEXT: `/export-bib` flow + bib-format unit tests (needs Semantic Scholar key), P
 - `~/scholarstack/tldr.py` — TL;DR §7.1: file/URL → MarkItDown → 5 bullets on v4-flash.
 - `~/scholarstack/consistency_check.py` — §6.2: docs → contradiction JSON on v4-flash, pass/fail exit code, audited. Live test caught planted n=42 vs n=60 + alpha contradiction.
 - Tests now 15 unit + 7 integration, all green.
-- **BLOCKED:** manuscript pipeline stages 5–10 — `scholarstack-pipeline` MIT fork still does not exist on GitHub (release blocker §11). Nothing to build against.
+- ~~BLOCKED: manuscript pipeline stages 5–10~~ → resolved by clean-room build, see below.
+
+## scholarstack-pipeline clean-room build (2026-07-19) — DONE
+- **Designed from PRD §5 only** — the CC-BY-NC reference repo's contents were never read this session; clean-room defensible. Author-permission email now nice-to-have, not blocker.
+- Local repo `~/scholarstack/scholarstack-pipeline` (git, MIT, commit f195597): `stages.py` (7 draft-stage prompt templates + peer-review sim), `pipeline.py` (~150-line runner: LightRAG-grounded per stage, mechanical [@key]-in-pool gate with bounded re-draft MAX=2 then hard fail, human confirmation gates unless --auto, audit-logged, pandoc→tectonic assembly).
+- pandoc 3.10 installed to ~/.local/bin (static, no sudo).
+- Tests: 3 unit (incl. full offline run → real PDF) + 1 live single-stage — all green. Totals now 18 unit + 8 integration.
+- TODO before public release: extract shared modules from ~/scholarstack into the package (currently sys.path import), pyproject, push to github.com/lerlerchan/scholarstack-pipeline (user creates repo).
+- Scopus APIs (dev.elsevier.com): free academic non-commercial tier with API key — strong Stage 1 + verification candidate for SUC FEIT; **Phase 2 paid cloud would need commercial license**. User signup required.
