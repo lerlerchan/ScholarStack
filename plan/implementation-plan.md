@@ -123,3 +123,8 @@ NEXT: `/export-bib` flow + bib-format unit tests (needs Semantic Scholar key), P
 - `~/scholarstack/scholarstack.py` — single `/scholarstack` entry per PRD §5 standing rule: verify → ingest → Gate 2.5 → spine → pipeline → consistency → PDF. Each gate short-circuits with exit 1; integrity non-skippable. 3 unit tests green (gate short-circuits + happy path).
 - Totals: 21 unit + 8 integration green.
 - Still user-side: Semantic Scholar key, Scopus key, Scholar Gateway auth, ANTHROPIC_API_KEY for n8n CritiqueBot, n8n workflow wiring, Telegram router (blocked on n8n webhooks existing).
+
+## Rename + package extraction (2026-07-20) — DONE
+- Product renamed **ScholarRail** (PRD v2.0.2). GitHub: lerlerchan/ScholarRail + scholarrail-pipeline (old URLs redirect). Local paths keep `scholarstack` names as documented synonyms (HANDOFF note).
+- Package extraction done: `scholarrail_pipeline/` (citations, llm, stages, pipeline) — self-contained, editable-installed into K45VD venv; glue scripts import `scholarrail_pipeline.citations`; chain invokes `python -m scholarrail_pipeline.pipeline`. CI now runs full unit suite. 21 unit tests green post-refactor.
+- sdist + wheel built (`dist/scholarrail_pipeline-0.1.0*`). **PyPI upload blocked: no PyPI token on K45VD** — user creates account/token at pypi.org, then `twine upload dist/*` claims the name.
