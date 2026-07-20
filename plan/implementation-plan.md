@@ -127,4 +127,5 @@ NEXT: `/export-bib` flow + bib-format unit tests (needs Semantic Scholar key), P
 ## Rename + package extraction (2026-07-20) — DONE
 - Product renamed **ScholarRail** (PRD v2.0.2). GitHub: lerlerchan/ScholarRail + scholarrail-pipeline (old URLs redirect). Local paths keep `scholarstack` names as documented synonyms (HANDOFF note).
 - Package extraction done: `scholarrail_pipeline/` (citations, llm, stages, pipeline) — self-contained, editable-installed into K45VD venv; glue scripts import `scholarrail_pipeline.citations`; chain invokes `python -m scholarrail_pipeline.pipeline`. CI now runs full unit suite. 21 unit tests green post-refactor.
-- sdist + wheel built (`dist/scholarrail_pipeline-0.1.0*`). **PyPI upload blocked: no PyPI token on K45VD** — user creates account/token at pypi.org, then `twine upload dist/*` claims the name.
+- sdist + wheel built (`dist/scholarrail_pipeline-0.1.0*`).
+- **PyPI published 2026-07-20:** `scholarrail-pipeline` 0.1.0 (real package) + `scholarrail` 0.0.1 (name-reservation stub). Token in `~/.pypirc` (600). Token was pasted in chat → rotate at pypi.org and update `~/.pypirc`.
