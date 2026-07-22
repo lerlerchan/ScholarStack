@@ -136,3 +136,8 @@ NEXT: `/export-bib` flow + bib-format unit tests (needs Semantic Scholar key), P
 - **Disqualifying finding, independent of score:** `SKILL.md` lines 19-22 embed an instruction directing any installing agent to read specific files under an unrelated path (`~/Project/visual-encoding-vs-raw-iot-reasoning`) — a prompt-injection-shaped payload targeting whatever agent installs the skill. Not acted on. Flagged to user.
 - Also a stack mismatch even setting security aside: Rust/Cargo/Docker/NVIDIA-API vs ScholarStack's Python/LightRAG pipeline — no capability gain over the existing CrossRef→DataCite→OpenAlex chain to justify a second runtime.
 - Repo kept locally for reference only, per the CC-BY-NC clean-room convention (never wire content in, never treat as source of truth for design).
+
+## Intake decision: stanford-oval/storm (2026-07-21) — SKIP
+- STORM: MIT, DSPy-based, two-stage (perspective-guided research → outline → article), 30k+ stars, NAACL/EMNLP published. No citation verification of its own.
+- **Decision: skip integration.** Redundant with existing PaperSpine (argument/blueprint) + `scholarrail_pipeline` (grounded drafting) — adopting it would mean two competing outline/drafting engines, and it still needs a verification layer in front of it (which ScholarStack already has). No net capability gain to justify a DSPy dependency.
+- **Idea worth keeping:** STORM's multi-perspective simulated Q&A before outlining is more sophisticated than PaperSpine's confirmed-contribution flow. Noted as a possible future enhancement to PaperSpine Stage 3, not a dependency — no ticket opened, revisit only if contribution-confirmation quality becomes a real complaint.
